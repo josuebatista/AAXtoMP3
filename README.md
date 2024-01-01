@@ -1,5 +1,5 @@
 # AAXtoMP3
-**IMPORTANT:** This repository was originally cloned from a [public archive.](https://github.com/KrumpetPirate/AAXtoMP3/)
+**IMPORTANT:** This repository was originally cloned from an archived, read-only [public repo.](https://github.com/KrumpetPirate/AAXtoMP3/)
 
 The purpose of this software is to convert AAX (or AAXC) files to common MP3, M4A, M4B, flac and ogg formats
 through a basic bash script frontend to FFMPEG.
