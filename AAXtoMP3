@@ -971,26 +971,37 @@ do
     log "Adding cover art"
     # FFMPEG does not support MPEG-4 containers fully #
     if [ "${container}" == "mp4" ] ; then
+      # log "container == mp4"
       mp4art --add "${cover_file}" "${output_file}"
     # FFMPEG for everything else #
     else
       # Create temporary output file name - ensure extention matches previous appropriate output file to keep ffmpeg happy
+      # log "container <> mp4"
       cover_output_file="${output_file%.*}.cover.${output_file##*.}"
-      # Copy audio stream from current output, and video stream from cover file, setting appropriate metadata
-      </dev/null "$FFMPEG" -loglevel quiet \
-        -nostats \
-        -i "${output_file}" \
-        -i "${cover_file}" \
-        -map 0:a:0 \
-        -map 1:v:0 \
-        -acodec copy \
-        -vcodec copy \
-        -id3v2_version 3 \
-        -metadata:s:v title="Album cover" \
-        -metadata:s:v comment="Cover (front)" \
-        "${cover_output_file}"
-        # Replace original output file with version including cover
-        mv "${cover_output_file}" "${output_file}"
+      # log "cover_output_file: ${cover_output_file}"
+      # log "output_file ${output_file}"
+      # log "cover_file: ${cover_file}"
+      # Check if both the cover file and the output file exist
+      if [ -f "${output_file}" ]; then
+        # Copy audio stream from current output, and video stream from cover file, setting appropriate metadata
+        </dev/null "$FFMPEG" -loglevel quiet \
+          -nostats \
+          -i "${output_file}" \
+          -i "${cover_file}" \
+          -map 0:a:0 \
+          -map 1:v:0 \
+          -acodec copy \
+          -vcodec copy \
+          -id3v2_version 3 \
+          -metadata:s:v title="Album cover" \
+          -metadata:s:v comment="Cover (front)" \
+          "${cover_output_file}"
+          # Replace original output file with version including cover
+          # log "output_file ${output_file}"
+          mv "${cover_output_file}" "${output_file}"
+        else
+          log "Adding cover art failed, original output file not found"
+        fi
     fi
   fi
 
@@ -998,6 +1009,8 @@ do
   # Announce that we have completed the transcode
   if [ "$((${loglevel} > 0))" == "1" ]; then
     log "Complete ${title}"
+  else
+    log "loglevel <> 1"  
   fi
   # Lastly get rid of any extra stuff.
   rm "${metadata_file}"
