@@ -1,4 +1,6 @@
 # AAXtoMP3
+![image](https://github.com/josuebatista/AAXtoMP3/assets/25143822/fb027983-54f3-4314-8559-c90fc0c4df25)
+
 **IMPORTANT:** This repository was originally cloned from an archived, read-only [public repo.](https://github.com/KrumpetPirate/AAXtoMP3/)
 
 The purpose of this software is to convert AAX (or AAXC) files to common MP3, M4A, M4B, flac and ogg formats
