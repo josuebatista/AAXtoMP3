@@ -1,5 +1,5 @@
 # AAXtoMP3
-![image](https://github.com/josuebatista/AAXtoMP3/assets/25143822/fb027983-54f3-4314-8559-c90fc0c4df25)
+![image](https://github.com/josuebatista/AAXtoMP3/assets/25143822/25757eb1-c039-4a14-84d0-7226cc9002c7)
 
 **IMPORTANT:** This repository was originally cloned from an archived, read-only [public repo.](https://github.com/KrumpetPirate/AAXtoMP3/)
 
